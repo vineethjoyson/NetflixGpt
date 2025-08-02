@@ -99,52 +99,64 @@ const Login = () => {
 
     // checkValidateData();
   };
+
   return (
-    <div>
+    <div className="relative min-h-screen">
       <Header />
-      <div>
-        <img className="absolute " src={BG_URL} alt="" />
+
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <img className="w-full h-full object-cover" src={BG_URL} alt="bg" />
       </div>
+
+      {/* Form */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className=" absolute   p-12 w-3/12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80"
+        className="w-[90%] sm:w-3/4 md:w-2/3 lg:w-1/3 xl:w-1/4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 sm:p-10 bg-black text-white bg-opacity-80 rounded-lg shadow-lg"
       >
-        <h1 className="font-bold text-3xl py-4">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-6">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+
         {!isSignInForm && (
           <input
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="p-4 my-4 w-full bg-slate-600 "
+            className="p-3 sm:p-4 mb-4 w-full bg-gray-700 rounded"
           />
         )}
-
         <input
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-4 my-4 w-full bg-gray-600"
+          className="p-3 sm:p-4 mb-4 w-full bg-gray-700 rounded"
         />
-
         <input
           ref={password}
-          type="text"
+          type="password"
           placeholder="Password"
-          className="p-4 my-4 w-full bg-slate-600 "
+          className="p-3 sm:p-4 mb-4 w-full bg-gray-700 rounded"
         />
-        <p className="text-red-500 font-bold text-lg p-2">{errorMessage}</p>
+
+        {errorMessage && (
+          <p className="text-red-500 font-semibold mb-4">{errorMessage}</p>
+        )}
+
         <button
-          className="p-4 my-4 bg-red-800 w-full rounded-lg"
+          className="p-3 sm:p-4 mb-4 bg-red-700 w-full rounded-lg hover:bg-red-800 transition"
           onClick={handleButtonClick}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="cursor-pointer" onClick={toggleSignInForn}>
+
+        <p
+          className="text-sm sm:text-base cursor-pointer text-gray-300 hover:text-white"
+          onClick={toggleSignInForn}
+        >
           {isSignInForm
-            ? "New to Netflix? Sign Up now"
-            : "Already registered? Sign In Now"}
+            ? "New to Netflix? Sign Up Now"
+            : "Already registered? Sign In Now."}
         </p>
       </form>
     </div>
