@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 const Login = () => {
@@ -17,7 +17,7 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const navigate = useNavigate(); //navigation to another page
+  // const navigate = useNavigate(); //navigation to another page
   const dispatch = useDispatch();
   const toggleSignInForn = () => {
     setIsSignInForm(!isSignInForm);
@@ -54,7 +54,6 @@ const Login = () => {
                 dispatch(
                   addUser({ uid: uid, email: email, displayName: displayName })
                 );
-                navigate("/browse");
               })
               .catch((error) => {
                 // An error occurred
@@ -83,7 +82,6 @@ const Login = () => {
             // Signed in
             const user = userCredential.user;
             console.log(user);
-            navigate("/browse");
             // ...
             setErrorMessage("");
           })
