@@ -42,7 +42,7 @@ const Header = () => {
     return () => unsubscribe(); //firebase thing to unmount so that we can avoid memory leakage
   }, []);
   return (
-    <div className="Login w-screen absolute px-6 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
+    <div className="  Login w-screen absolute px-6 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44" src={LOGO} alt="" />
       {user && (
         <div className="flex p-2 ">
