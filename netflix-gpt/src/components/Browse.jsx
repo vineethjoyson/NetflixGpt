@@ -4,14 +4,16 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopratedMovies from "../hooks/useTopratedMovies";
+import GPTSearchPage from "./GPTSearchPage";
+import { useSelector } from "react-redux";
+
 const Browse = () => {
+  const showGptSearchview = useSelector((store) => store.gpt.showGptSearch);
   useNowPlayingMovies(); //custom hook to fetch now playing movies and update the movie sliec in redux
   usePopularMovies();
   useTopratedMovies();
   return (
     <div>
-      <Header />
-
       {/*
         MainContainer
           -VideoBackground
@@ -20,9 +22,15 @@ const Browse = () => {
           - MovieList*n
             - MovieCards*n 
         */}
-      <MainContainer />
-
-      <SecondaryContainer />
+      <Header />
+      {showGptSearchview ? (
+        <GPTSearchPage />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   );
 };

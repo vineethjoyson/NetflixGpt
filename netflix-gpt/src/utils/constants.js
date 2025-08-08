@@ -15,3 +15,13 @@ export const API_OPTIONS = {
 };
 
 export const IMG_CDN = "https://image.tmdb.org/t/p/w780/";
+
+export const SUPPORTED_LANGUAGE = [
+  { identifier: "English", name: "English" },
+  { identifier: "Hindi", name: "Hindi" },
+  { identifier: "Spanish", name: "Spanish" },
+  { identifier: "French", name: "French" },
+  { identifier: "Malayalam", name: "Malayalam" },
+  { identifier: "Japanese", name: "Japanese" },
+  { identifier: "Chinese", name: "Chinese" },
+];

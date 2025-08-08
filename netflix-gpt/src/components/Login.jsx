@@ -30,7 +30,6 @@ const Login = () => {
       name?.current?.value,
       isSignInForm
     );
-    console.log(message);
     if (!message) {
       //null so its valid compination so go ahead with signup/signIn
       if (!isSignInForm) {
@@ -43,7 +42,6 @@ const Login = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
-            console.log(user);
             updateProfile(user, {
               displayName: name?.current?.value,
             })
@@ -81,7 +79,6 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
             // ...
             setErrorMessage("");
           })
