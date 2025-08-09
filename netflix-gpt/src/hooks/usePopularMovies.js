@@ -1,9 +1,11 @@
 import { API_OPTIONS } from "../utils/constants";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPopularMovies } from "../utils/movieSlice";
 const usePopularMovies = () => {
   const dipatch = useDispatch();
+  //for memoization
+  const popularMovies = useSelector((store) => store.movies.popularMovies);
   const getPopularMovies = async () => {
     const data = await fetch(
       "https://api.themoviedb.org/3/movie/popular",
@@ -14,7 +16,8 @@ const usePopularMovies = () => {
     dipatch(addPopularMovies(json.results));
   };
   useEffect(() => {
-    getPopularMovies();
+    //for memoization only make callif popular movie is not there
+    !popularMovies && getPopularMovies();
   }, []);
 };
 

@@ -9,8 +9,7 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NTJjYjA0ZmI1YjU4MTkwMDNiNGVkZDgzMjg1YTJhZSIsIm5iZiI6MTUyNDkwOTI5MS42MjUsInN1YiI6IjVhZTQ0NGViOTI1MTQxNmI3NDAwNDQ5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.biJBiyi6C0UcCCZMWlDS1hsnYve9UxER6X4GKIjtfqY",
+    Authorization: `Bearer ${process.env.REACT_APP_TMDB_KEY}`,
   },
 };
 
@@ -25,3 +24,6 @@ export const SUPPORTED_LANGUAGE = [
   { identifier: "Japanese", name: "Japanese" },
   { identifier: "Chinese", name: "Chinese" },
 ];
+
+export const OPENAI_KEY =
+  "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";

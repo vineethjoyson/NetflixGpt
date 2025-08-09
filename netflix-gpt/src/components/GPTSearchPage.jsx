@@ -8,7 +8,7 @@ const GPTSearchPage = () => {
         //gpt searchBar
         //gpt movie Suggestion
       }
-      <div className="absolute inset-0 -z-10">
+      <div className="fixed inset-0 -z-10">
         <img className="w-full h-full object-cover" src={BG_URL} alt="bg" />
       </div>
       <GPTSearchBar />
