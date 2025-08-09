@@ -21,7 +21,7 @@ const GPTSearchBar = () => {
     return json.results;
   };
   const handleGptSearchclick = async () => {
-    console.log(saerchText.current.value);
+    console.log("searchtext", saerchText.current.value);
     //Make an api call to GPT api and get movie results
     // const gptQuery = `Act as a Movie reccomendation system and suggest some movies for the query${saerchText.current.value}. Only give names of 5 movies , comma separated like the exaple results ahead. Example Result: lion King, IronMan, E.t`;
     // const gptresults = await openAi.chat.completions.create({
@@ -29,34 +29,38 @@ const GPTSearchBar = () => {
     //   messages: [{ role: "user", content: gptQuery }],
     // });
     // console.log(gptresults.choices[0].message.content);
-    const movierecommendation = await getMoviesFromPrompt(
-      saerchText.current.value
-    );
+    if (!saerchText.current.value) {
+      dispatch(addGptMovieResult({ movieNames: null, movieResults: null }));
+    } else {
+      const movierecommendation = await getMoviesFromPrompt(
+        saerchText.current.value
+      );
 
-    const gptMovies = movierecommendation.split(",");
-    console.log("movieList", gptMovies);
-    // For each movie I will search TMDB API
+      const gptMovies = movierecommendation.split(",");
+      console.log("movieList", gptMovies);
+      // For each movie I will search TMDB API
 
-    const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
-    // [Promise, Promise, Promise, Promise, Promise]
+      const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
+      // [Promise, Promise, Promise, Promise, Promise]
 
-    const tmdbResults = await Promise.all(promiseArray);
+      const tmdbResults = await Promise.all(promiseArray);
 
-    console.log(tmdbResults);
-    dispatch(
-      addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
-    );
+      console.log(tmdbResults);
+      dispatch(
+        addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
+      );
+    }
   };
   return (
     <div className="pt-[10%]">
       <form
-        className=" w-1/2 bg-black flex m-auto"
+        className=" w-11/12  md:w-1/2 bg-black flex m-auto"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={saerchText}
           type="text"
-          className="p-4 m-4 w-9/12 rounded-md"
+          className="p-4 m-4 w-9/12 rounded-md text-xs md:text-lg"
           placeholder={lang[langKey].gptSearchPlaceHolder}
         />
         <button

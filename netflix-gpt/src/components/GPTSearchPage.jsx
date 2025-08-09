@@ -3,7 +3,7 @@ import GPTSearchBar from "./GPTSearchBar";
 import { BG_URL } from "../utils/constants";
 const GPTSearchPage = () => {
   return (
-    <div>
+    <div className="pt-[30%] md:pt-0">
       {
         //gpt searchBar
         //gpt movie Suggestion

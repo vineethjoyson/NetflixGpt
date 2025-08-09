@@ -53,8 +53,8 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
   return (
-    <div className="  Login w-screen absolute px-6 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44" src={LOGO} alt="" />
+    <div className="  Login w-screen absolute px-6 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between  ">
+      <img className="w-44 mx-auto md:mx-0" src={LOGO} alt="" />
       {user && (
         <div className="flex p-2 ">
           {showGptSearchview && (
@@ -71,15 +71,21 @@ const Header = () => {
           )}
 
           <button
-            className="py-2 px-4 mx-4 my-2 bg-purple-500 text-white rounded-md"
+            className="py-1 px-4 mx-4 my-2 bg-red-700  md:hover:bg-opacity-50 text-white rounded-md"
             onClick={handleSearchGPTClick}
           >
             {showGptSearchview ? <p>Home</p> : <p>search</p>}
           </button>
-          <img className="w-12 h-12" src={USER_AVATAR} alt="userIcon" />
-          <button onClick={handleSignOut} className="text-white font-bold">
-            (Sign Out)
-          </button>
+          <div className=" flex md:flex md:flex-col ">
+            <img
+              className="hidden md:inline-block w-12 h-12 rounded-lg"
+              src={USER_AVATAR}
+              alt="userIcon"
+            />
+            <button onClick={handleSignOut} className="text-white font-bold">
+              Sign Out
+            </button>
+          </div>
         </div>
       )}
     </div>

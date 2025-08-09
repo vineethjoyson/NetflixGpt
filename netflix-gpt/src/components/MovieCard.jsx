@@ -5,7 +5,7 @@ const MovieCard = ({ posterpath }) => {
   return (
     <div>
       <img
-        className="min-w-[220px] shrink-0  transition-transform duration-300 transform hover:scale-110 cursor-pointer w-36 md:w-48 pr-4"
+        className="min-w-[120px] md:min-w-[220px] shrink-0  transition-transform duration-300 transform hover:scale-110 cursor-pointer w-36 md:w-48 pr-4"
         src={`${IMG_CDN}${posterpath}`}
         alt="Movie Card"
       />

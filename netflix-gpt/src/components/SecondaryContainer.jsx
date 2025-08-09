@@ -14,7 +14,7 @@ const SecondaryContainer = () => {
 so on...
 
     */}
-      <div className=" -mt-32 relative z-20 ">
+      <div className=" mt:0 md:-mt-32 relative z-20 ">
         {movies.nowPlayingMovies && (
           <MovieList title={"Now playing"} movies={movies.nowPlayingMovies} />
         )}
