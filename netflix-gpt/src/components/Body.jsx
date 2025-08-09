@@ -2,6 +2,7 @@ import "../App.css";
 import Login from "./Login";
 import Browse from "./Browse";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import VideoPlayer from "./VideoPlayer";
 const Body = () => {
   const appRouter = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/play/:movieId", //Dynamic
+      element: <VideoPlayer />,
     },
   ]);
 
