@@ -25,5 +25,4 @@ export const SUPPORTED_LANGUAGE = [
   { identifier: "Chinese", name: "Chinese" },
 ];
 
-export const OPENAI_KEY =
-  "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";
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
